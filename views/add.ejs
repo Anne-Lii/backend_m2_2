@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/main.css">
+    <title>Lägg till jobb</title>
+</head>
+<header>
+    <nav>
+        <ul>
+            <li><a href="/">Mina tidigare jobb</a></li>
+            <li><a href="/add">Lägg till jobb</a></li>
+            <li><a href="/about">Om uppgiften</a></li>
+        </ul>
+    </nav>
+</header>
+<body>
+    <h1>Lägg till jobb</h1>
+    <form id="addForm">
+        <label for="companyname">Företagsnamn: </label><br>
+        <input type="text" id="companyname" name="companyname">
+        <br>
+        <label for="location">Ort: </label><br>
+        <input type="text" id="location" name="location">
+        <br>
+        <label for="jobtitle">Titel: </label><br>
+        <input type="text" id="jobtitle" name="jobtitle">
+        <br>
+        <label for="description">Beskrivning: </label><br>
+        <input type="textarea" id="description" name="description">
+        <br>
+        <label for="startdate">Startdatum: </label>
+        <input type="date" id="startdate" name="startdate">
+        <br>
+        <label for="enddate">Slutdatum: </label><br>
+        <input type="radio" id="ongoing" name="enddateoption" value="Pågående" checked>
+        <label for="ongoing">Pågående</label>
+        <input type="radio" id="specificDate" name="enddateoption" value="specificDate">
+        <input type="date" id="specificEndDate" name="specificEndDate" disabled>
+        <button type="submit">Lägg till</button>
+    </form>
+    <script src="/js/main.js"></script> 
+</body>
+</html>
