@@ -1,5 +1,5 @@
 //hämtar element från HTML koden
-const postList = document.getElementById('jobList');
+const jobList = document.getElementById('jobList');
 const addForm = document.getElementById('addForm');
 
 // Funktion för att hämta tidigare jobb
@@ -9,7 +9,7 @@ function getJobs() {
     .then(data => {
         
         //loopa igenom och ut till DOM
-        postList.innerHTML = '';
+        jobList.innerHTML = '';
         data.forEach(job => {
             const listItem = document.createElement('li');
             listItem.innerHTML = `
@@ -20,7 +20,7 @@ function getJobs() {
             <p><strong>Slutdatum:</strong> ${job.enddate ? job.enddate : 'Pågående'}</p>
             <p><strong>Beskrivning:</strong> ${job.description}</p>
         `;
-            postList.appendChild(listItem);
+        jobList.appendChild(listItem);
         });
     });
 }
