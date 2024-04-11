@@ -12,6 +12,8 @@ app.use(express.json());// Middleware för att tolka JSON
 app.use(cors());// Middleware för CORS
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true}));
+app.use('/css', express.static(__dirname + '/public/css'));
+app.use('/js', express.static(__dirname + '/public/js'));
 
 app.set("view engine", "ejs");//view engine: EJS
 
@@ -26,7 +28,19 @@ const client = new Client({
 client.connect();
 
 // Routing
-app.get("/posts", async (req, res) => {
+app.get("/", (req, res) => {
+    res.render("index");
+});
+
+app.get("/add", (req, res) => {
+    res.render("add");
+});
+
+app.get("/about", (req, res) => {
+    res.render("about");
+});
+
+app.get("/post", async (req, res) => {
     try {
         const result = await client.query("SELECT * FROM jobs");
         res.json(result.rows);
