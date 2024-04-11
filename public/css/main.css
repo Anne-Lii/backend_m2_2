@@ -26,8 +26,37 @@ nav ul li a{
     background-color: rgb(121, 44, 194);
 }
 #container_index {
-    width: 100%;
+    width: 90%;
     max-width: 1200px;
     margin: auto;
     min-height: 60vh;
+    padding-top: 30px;
+}
+.loading {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 9999;
+}
+  
+.spinner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    border: 4px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 4px solid #3498db;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+}
+#jobList {
+    padding-top: 50px;
+}
+#jobList li{
+   padding: 5px;
 }

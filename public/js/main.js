@@ -1,38 +1,46 @@
-document.addEventListener("DOMContentLoaded", ()=> {
+document.addEventListener("DOMContentLoaded", () => {
 
-//hämtar element från HTML koden
-const jobList = document.getElementById('jobList');
-const addForm = document.getElementById('addForm');
+    //get element fom HTML code 
+    const jobList = document.getElementById("jobList");
+    const addForm = document.getElementById("addForm");
+    const loadingIcon = document.getElementById("loading");
 
-// Funktion för att hämta tidigare jobb
-function getJobs() {
-    fetch('https://backend-moment2-1-oqoy.onrender.com/api/work')
-    .then(response => response.json())
-    .then(data => {
+    // Function to get jobs
+    function getJobs() {
+
+        loadingIcon.style.display = "block";//show loading icon while waiting on fetch 
+
+        fetch('https://backend-moment2-1-oqoy.onrender.com/api/work')
+            .then(response => response.json())
+            .then(data => {
+
+                loadingIcon.style.display = "none";//hide loading icon after fetch is done
+
+                //loop write to DOM
+                jobList.innerHTML = '';
+                data.forEach(job => {
+                    const listItem = document.createElement('li');
+                    listItem.innerHTML = `
+                <h3>${job.jobtitle}</h3>
+                <p><strong>Företag:</strong> ${job.companyname}</p>
+                <p><strong>Ort:</strong> ${job.location}</p>
+                <p><strong>Startdatum:</strong> ${job.startdate}</p>
+                <p><strong>Slutdatum:</strong> ${job.enddate ? job.enddate : 'Pågående'}</p>
+                <p><strong>Beskrivning:</strong> ${job.description}</p>
+                `;
+                    jobList.appendChild(listItem);
+                });
+                
+            });
         
-        //loopa igenom och ut till DOM
-        jobList.innerHTML = '';
-        data.forEach(job => {
-            const listItem = document.createElement('li');
-            listItem.innerHTML = `
-            <h3>${job.jobtitle}</h3>
-            <p><strong>Företag:</strong> ${job.companyname}</p>
-            <p><strong>Ort:</strong> ${job.location}</p>
-            <p><strong>Startdatum:</strong> ${job.startdate}</p>
-            <p><strong>Slutdatum:</strong> ${job.enddate ? job.enddate : 'Pågående'}</p>
-            <p><strong>Beskrivning:</strong> ${job.description}</p>
-        `;
-        jobList.appendChild(listItem);
-        });
-    });
-}
+    }
 
-// Ladda in befintliga poster när sidan laddas
-getJobs();
+    // call function get jobs to load jobs
+    getJobs();
 
-    // eventlyssnare
-    if(addForm) {
-        addForm.addEventListener('submit', function(event) {
+    // eventlistener form
+    if (addForm) {
+        addForm.addEventListener('submit', function (event) {
             event.preventDefault();
 
             const companyname = document.getElementById('companyname').value;
@@ -49,14 +57,12 @@ getJobs();
                 },
                 body: JSON.stringify({ companyname, location, jobtitle, description, startdate, enddate })
             })
-            .then(response => response.json())
-            .then(data => {
-                getJobs(); // Uppdatera listan med jobb
-                document.getElementById('addForm').reset(); // Rensa formuläret
-            });
+                .then(response => response.json())
+                .then(data => {
+                    getJobs(); // Update list with jobs
+                    document.getElementById('addForm').reset(); // Clear form
+                });
         });
     };
-
-
 
 });
