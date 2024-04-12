@@ -48,7 +48,7 @@ app.get("/post", async (req, res) => {
     }
 });
 
-app.post("/posts", async (req, res) => {
+app.post("/api/work", async (req, res) => {
     const { companyname, location, jobtitle, description, startdate, enddate } = req.body;
     try {
         const result = await client.query(

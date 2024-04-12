@@ -37,7 +37,7 @@ document.addEventListener("DOMContentLoaded", () => {
                             <p><strong>Ort:</strong> ${job.location}</p>
                             <p><strong>Startdatum:</strong> ${job.startdate}</p>
                             <p><strong>Slutdatum:</strong> ${job.enddate ? job.enddate : "Pågående"}</p>
-                            <p><strong>Beskrivning:</strong> ${job.description}</p>
+                            <p><strong>Beskrivning:</strong> ${job.description}</p><br>
                             <button class="removeBtn" data-job-id="${job.id}">Ta bort jobb</button>
                             `;
 
@@ -95,18 +95,13 @@ document.addEventListener("DOMContentLoaded", () => {
     getJobs();
 
     const addForm = document.getElementById("addForm");
-    const ongoing = document.getElementById("ongoing");
-    const endDate = document.getElementById("enddate");
+
 
     // eventlistener form
     if (addForm) {
         addForm.addEventListener("submit", function (event) {
             event.preventDefault();
-
-            let enddateValue = endDate.value;
-            if (ongoing.checked) {
-                enddateValue = "Pågående";
-            }
+          
 
             const formData = {
                 companyname: document.getElementById("companyname").value,
@@ -114,7 +109,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 jobtitle: document.getElementById("jobtitle").value,
                 description: document.getElementById("description").value,
                 startdate: document.getElementById("startdate").value,
-                enddate: enddateValue
+                enddate: document.getElementById("enddate").value
             };
 
             fetch("https://backend-moment2-1-oqoy.onrender.com/api/work", {
@@ -133,16 +128,6 @@ document.addEventListener("DOMContentLoaded", () => {
                     addForm.reset(); // Clear form
                     window.location.href = "/";//redirect to index.ejs 
                 });
-        });
-
-        //event for altering ongoing job or end date on job
-        ongoing.addEventListener("change", function () {
-            if (this.checked) {
-                endDate.disabled = true;
-                endDate.value = "";
-            } else {
-                endDate.disabled = false;
-            }
         });
     };
 });

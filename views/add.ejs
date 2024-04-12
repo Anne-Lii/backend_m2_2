@@ -10,38 +10,38 @@
     <header>
         <nav>
             <ul>
-                <li><a href="/">Startsidan</a></li>
+                <li><a href="/">Startsida</a></li>
                 <li><a href="/add">Lägg till jobb</a></li>
                 <li><a href="/about">Om uppgiften</a></li>
             </ul>
         </nav>
     </header>
     <main>
-        <h1>Lägg till jobb</h1>
-        <form id="addForm">
-            <label for="companyname">Företagsnamn: </label><br>
-            <input type="text" id="companyname" name="companyname">
-            <br>
-            <label for="location">Ort: </label><br>
-            <input type="text" id="location" name="location">
-            <br>
-            <label for="jobtitle">Titel: </label><br>
-            <input type="text" id="jobtitle" name="jobtitle">
-            <br>
-            <label for="description">Beskrivning: </label><br>
-            <input type="text" id="description" name="description">
-            <br>
-            <label for="startdate">Startdatum: </label>
-            <input type="date" id="startdate" name="startdate">
-            <br>
-            <label for="enddate">Slutdatum: </label>
-            <input type="date" id="enddate" name="enddate">
-            <br>
-            <input type="radio" id="ongoing" name="ongoing" value="Pågående" >
-            <label for="ongoing">Pågående: </label>
-            <br>
-            <button type="submit">Lägg till</button>
-        </form>
+        <div id="liner"></div>
+        <div id="container_add">
+            <h1>Lägg till jobb</h1>
+            <form id="addForm">
+                <label for="companyname">Företagsnamn: </label><br>
+                <input type="text" id="companyname" name="companyname">
+                <br>
+                <label for="location">Ort: </label><br>
+                <input type="text" id="location" name="location">
+                <br>
+                <label for="jobtitle">Titel: </label><br>
+                <input type="text" id="jobtitle" name="jobtitle">
+                <br>
+                <label for="description">Beskrivning: </label><br>
+                <input type="text" id="description" name="description">
+                <br><br>
+                <label for="startdate">Startdatum: </label>
+                <input type="date" id="startdate" name="startdate">
+                <br><br>
+                <label for="enddate">Slutdatum: </label>
+                <input type="date" id="enddate" name="enddate">
+                <br><br>
+                <button type="submit">Lägg till jobb</button>
+            </form>
+        </div>
     </main>
     <script src="/js/main.js"></script> 
 </body>
