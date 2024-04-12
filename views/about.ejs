@@ -12,7 +12,7 @@
             <ul>
                 <li><a href="/">Startsida</a></li>
                 <li><a href="/add">Lägg till jobb</a></li>
-                <li><a href="/about">Om uppgiften</a></li>
+                <li><a href="/about" class="active">Om uppgiften</a></li>
             </ul>
         </nav>
     </header>
@@ -20,7 +20,13 @@
         <div id="liner"></div>
         <div id="container_about">
             <h1>Om uppgiften</h1>   
-            <p>Jag har försökt att vara konsekvent i att bara använda engelska i både kodning, namn på variabler och funktioner samt kommentarerna.</p>
+            <p>En applikation byggd med express, node.js som listar mina tidigare jobberfarenheter. 
+                På sidan för att Lägga till jobb finns ett formulär som fylls i och vid submit skickas datan iväg till min postgre databas som ligger på Render.com.
+                Därefter skrivs alla jobb i databasen ut till listan på förstasidan. 
+                <br><br>
+                Detta var en svår uppgift som har tagit mycket tid. Jag försökte lägga till en radioknapp i formuläret för att kunna välja ett slutdatum eller klicka i att jobbet var Pågående. 
+                Men jag fick verkligen inte till det att pågående skulle avaktiveras när man valde enddate och tvärtom så jag tog bort det efter att ha suttit med det i flera timmar då det inte var ett krav till uppgiften. 
+                Jag har försökt att vara konsekvent i att bara använda engelska i både kodning, namn på variabler och funktioner samt kommentarerna.</p>
         </div>
     </main>
     <script src="/js/main.js"></script> 
