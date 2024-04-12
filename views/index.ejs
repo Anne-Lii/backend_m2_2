@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,27 +8,33 @@
     <link rel="stylesheet" href="/css/animation.css">
     <title>Mina tidigare jobb</title>
 </head>
-<header>
-    <nav>
-        <ul>
-            <li><a href="/">Startsida</a></li>
-            <li><a href="/add">Lägg till jobb</a></li>
-            <li><a href="/about">Om uppgiften</a></li>
-        </ul>
-    </nav>
-</header>
-<div id="liner"></div>
+
 <body>
-    <div id="container_index">
-        <h1>Mina tidigare arbetslivserfarenheter</h1>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="/">Startsida</a></li>
+                <li><a href="/add">Lägg till jobb</a></li>
+                <li><a href="/about">Om uppgiften</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <div id="liner"></div>
+        <div id="container_index">
+            <h1>Mina tidigare arbetslivserfarenheter</h1>
 
-        <a href="/add">Lägg till jobb</a>
+            <a href="/add">Lägg till jobb</a>
 
-        <div id="loadingIcon" style="display: none;" class="loading">
-           <div class="spinner"></div>
-        </div>   
+            <div id="loadingIcon" style="display: none;" class="loading">
+                <div class="spinner"></div>
+            </div>
 
-        <ul id="jobList"></ul>
-    <script src="/js/main.js"></script> 
+            <ul id="jobList"></ul>
+        </div>
+    </main>
+    <script src="/js/main.js"></script>
+
 </body>
+
 </html>

@@ -3,15 +3,12 @@
 //inkluderar express och cors
 const express = require("express");
 const cors = require("cors");
-const bodyParser = require("body-parser");
 const {Client} = require("pg");
 
 const app = express();
 
 app.use(express.json());// Middleware för att tolka JSON
 app.use(cors());// Middleware för CORS
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true}));
 app.use('/css', express.static(__dirname + '/public/css'));
 app.use('/js', express.static(__dirname + '/public/js'));
 
@@ -43,6 +40,7 @@ app.get("/about", (req, res) => {
 app.get("/post", async (req, res) => {
     try {
         const result = await client.query("SELECT * FROM jobs");
+        console.log("Fetched data from database:", result.rows);
         res.json(result.rows);
     } catch (err) {
         console.error(err);
@@ -58,6 +56,21 @@ app.post("/posts", async (req, res) => {
             [companyname, location, jobtitle, description, startdate, enddate]
         );
         res.json(result.rows[0]);
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ message: "Serverfel"});
+    }
+});
+
+app.delete("/posts/:id", async (req, res) => {
+    const jobId = req.params.id;
+    try {
+        const result = await client.query('DELETE FROM jobs WHERE id = $1 RETURNING *', [jobId]);
+        if (result.rowCount > 0) {
+            res.json({ message: "Job deleted successfully" });
+        } else {
+            res.status(404).json({ message: "Job not found" });
+        }
     } catch (err) {
         console.error(err);
         res.status(500).json({ message: "Serverfel"});
